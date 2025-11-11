@@ -3,7 +3,11 @@ set -euo pipefail
 echo "syncing.."
 
 if git diff --cached --quiet; then
-    echo 'merged github,gitlab and local changes'
+    echo 'nothing'
 else
-    echo "nothing to commit"
+    echo "NEED commit !!!"
+fi
+
+if [ "$(git rev-list origin/master..HEAD)" ]; then
+	echo "PUSH"
 fi
