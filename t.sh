@@ -11,7 +11,7 @@ else
     git commit -m 'merged github,gitlab and local changes'
 fi
 
-if [ "$(git rev-list origin/master..HEAD)" ]; then
+if [ "$(git rev-list origin/main..HEAD)" ]; then
 	echo "PUSH"
 	git push
 fi
