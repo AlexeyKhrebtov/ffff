@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 echo "syncing.."
+git fetch
+
+
+touch `date +%F`-output.log
+git add .
+git commit -m "m"
+git push
 
 git add -u .
 
