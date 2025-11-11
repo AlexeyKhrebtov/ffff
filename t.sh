@@ -2,7 +2,7 @@
 set -euo pipefail
 echo "syncing.."
 git fetch
-
+git pull
 
 touch `date +%F`-output.log
 git add .
