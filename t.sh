@@ -4,7 +4,7 @@ echo "syncing.."
 git fetch
 git pull
 
-touch `date +%F`-output.log
+touch `date +%S`-output.log
 git add .
 git commit -m "m"
 git push
