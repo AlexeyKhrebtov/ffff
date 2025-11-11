@@ -15,3 +15,6 @@ if [ "$(git rev-list origin/master..HEAD)" ]; then
 	echo "PUSH"
 	git push
 fi
+
+echo " "
+echo "OK"
