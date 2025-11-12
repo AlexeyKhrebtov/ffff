@@ -27,3 +27,4 @@ function handleUrlAnchor(clickDelay = 100, maxAttempts = 5) {
 $(document).ready(function() {
     handleUrlAnchor();
 });
+
