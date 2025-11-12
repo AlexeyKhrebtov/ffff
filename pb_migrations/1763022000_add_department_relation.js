@@ -25,7 +25,7 @@ migrate(
     }
 
     // Проверка: если поле уже существует — пропускаем
-    if (profiles.fields.getByName.("department")) {
+    if (profiles.fields.getByName("department")) {
       console.log("⚠️ Field 'department' already exists, skipping");
       return;
     }
