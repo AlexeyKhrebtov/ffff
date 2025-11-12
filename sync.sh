@@ -12,8 +12,15 @@ echo "writing last 60 lines of the log file to tail.server.log"
 
 tail -n 60 ~/anchor_click.js > ./r.r
 
-git add ./r.r
-git commit -m 'fresh server log'
+if ! git diff --quiet -- ./r.r; then
+        echo "r.r has changes - adding and committing"
+        git add ./r.r
+        git commit -m 'fresh server log'
+    else
+        echo "r.r file exists but has no changes"
+    fi
+#git add ./r.r
+#git commit -m 'fresh server log'
 
 git add -u .
 if ! git diff --cached --exit-code; then
