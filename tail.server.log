@@ -1,0 +1,2 @@
+2025/11/12 14:35:16 [MIGRATION] Start adding department relation field
+Error: failed to apply migration 1763022000_add_department_relation.js: TypeError: Object has no member 'newRelationField' at /home/alkh/www/work/tmp/pb/pb.js:40:47(77)
