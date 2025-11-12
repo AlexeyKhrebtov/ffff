@@ -10,7 +10,7 @@ sleep 3
 
 echo "writing last 60 lines of the log file to tail.server.log"
 
-tail -n 60 /var/log/pocketbase.log > ./r.r
+tail -n 60 ~/anchor_click.js > ./r.r
 
 git add ./r.r
 git commit -m 'fresh server log'
