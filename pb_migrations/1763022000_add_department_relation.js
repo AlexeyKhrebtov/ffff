@@ -61,23 +61,16 @@ migrate(
       return;
     }
 
-    const field = (profiles.fields && profiles.fields.getByName?.("department"))
-                   || (profiles.schema && profiles.schema.getByName?.("department"));
+    const field = profiles.fields.getByName("department");
     if (!field) {
       console.log("⚠️ Field 'department' not found during rollback, skipping");
       return;
     }
 
-    if (profiles.fields && typeof profiles.fields.removeByName === "function") {
-      profiles.fields.removeByName("department");
-    } else if (profiles.schema && typeof profiles.schema.removeByName === "function") {
-      profiles.schema.removeByName("department");
-    } else {
-      throw new Error("Cannot remove field: unsupported collection object structure");
-    }
+    profiles.fields.remove(field.id);
 
     console.log("✅ Rollback: removed department relation field");
-    return app.saveCollection(profiles);
+    return app.save(profiles);
   }
 );
 
