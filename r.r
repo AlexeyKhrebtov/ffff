@@ -1,4 +1,4 @@
-function handleUrlAnchor(clickDelay = 100, maxAttempts = 5) {
+UrlAnchor(clickDelay = 100, maxAttempts = 5) {
     var anchor = window.location.hash;
 
     if (!anchor) return;
