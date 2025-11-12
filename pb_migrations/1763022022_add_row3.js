@@ -14,7 +14,7 @@ migrate(
 
     let record = new Record(departments)
     
-    record.set("name", "333-v2")
+    record.set("name", "3733-v2")
     
     console.log("✅ Added row");
     app.save(record);
