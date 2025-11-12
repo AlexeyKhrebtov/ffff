@@ -8,11 +8,7 @@ migrate(
     let profiles = null;
     try {
       profiles = app.findCollectionByNameOrId("profiles");
-    } catch (_) {
-      try {
-        profiles = app.findCollectionByNameOrId("pbc_715455300");
-      } catch (_) {}
-    }
+    } catch (_) { }
     if (!profiles) {
       console.log("⚠️ Collection 'profiles' not found, skipping");
       return;
@@ -34,29 +30,20 @@ migrate(
       return;
     }
 
-    // Создаём поле relation
-    const relation = new RelationField({
-      name: "department",
-      collectionId: departments.id,
-      cascadeDelete: false,
-      minSelect: 0,
-      maxSelect: 1,
-      displayFields: ["name"],
-      required: false,
-      unique: false,
-    });
-
-    // Добавляем поле
-    if (profiles.fields && typeof profiles.fields.add === "function") {
-      profiles.fields.add(relation);
-    } else if (profiles.schema && typeof profiles.schema.add === "function") {
-      profiles.schema.add(relation);
-    } else {
-      throw new Error("Cannot add field: unsupported collection object structure");
-    }
-
+    // add new editor field
+    profiles.fields.add(new RelationField({
+        name:     "department",
+        collectionId: departments.id,
+        cascadeDelete: false,
+        minSelect: 0,
+        maxSelect: 1,
+        displayFields: ["name"],
+        required: false,
+        unique: false,
+    }))
+    
     console.log("✅ Added department relation field");
-    return app.saveCollection(profiles);
+    return app.save(profiles)
   },
   (app) => {
     console.log("[ROLLBACK] Start removing department relation field");
